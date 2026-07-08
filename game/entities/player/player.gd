@@ -8,6 +8,7 @@ class_name Player
 var resources: int = 100
 signal resources_changed(new_amount: int)
 
+
 # Currently overlapping resource node (set by HarvestArea signals)
 var nearby_resource_node: Node = null
 
