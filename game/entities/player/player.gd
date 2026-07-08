@@ -11,6 +11,14 @@ signal resources_changed(new_amount: int)
 # Currently overlapping resource node (set by HarvestArea signals)
 var nearby_resource_node: Node = null
 
+@onready var resource_label: Label = $HUD/ResourceLabel
+@onready var harvest_prompt: Label = $HUD/HarvestPrompt
+
+
+func _ready() -> void:
+	resource_label.text = "Resources: %d" % resources
+	harvest_prompt.visible = false
+
 
 func _physics_process(_delta: float) -> void:
 	var input_dir := Vector2.ZERO
@@ -45,13 +53,7 @@ func _try_harvest() -> void:
 			print("Harvested %d, total: %d" % [gained, resources])
 
 
-# Called by BuildingSystem when a tower is placed.
-func spend(amount: int) -> bool:
-	if resources >= amount:
-		resources -= amount
-		resources_changed.emit(resources)
-		return true
-	return false
+
 
 
 # --- Connect these two from the HarvestArea (Area2D) node's signals ---

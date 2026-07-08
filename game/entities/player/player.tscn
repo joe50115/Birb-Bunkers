@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://crs1uxb5mvmr6"]
+
+[ext_resource type="Script" uid="uid://b3g7h5hrwwbb0" path="res://game/entities/player/player.gd" id="1_a"]
+[ext_resource type="Script" uid="uid://djcccfr5gbniq" path="res://scripts/building_system.gd" id="2_b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(28, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_harvest"]
+radius = 80.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1230792394]
+script = ExtResource("1_a")
+
+[node name="Visual" type="Polygon2D" parent="." unique_id=1887030534]
+color = Color(0.2, 0.6, 1, 1)
+polygon = PackedVector2Array(0, -16, 14, 12, 0, 4, -14, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1688728142]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="HarvestArea" type="Area2D" parent="." unique_id=1676188579]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestArea" unique_id=1125258615]
+shape = SubResource("CircleShape2D_harvest")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="BuildingSystem" type="Node2D" parent="." unique_id=1729367934]
+script = ExtResource("2_b")
+
+[connection signal="area_entered" from="HarvestArea" to="." method="_on_harvest_area_area_entered"]
+[connection signal="area_exited" from="HarvestArea" to="." method="_on_harvest_area_area_exited"]
