@@ -9,13 +9,13 @@ bullet_scene = ExtResource("2_gdejx")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2129960651]
 offset_top = -8.0
-offset_right = 72.0
-offset_bottom = 8.0
+offset_right = 70.0
+offset_bottom = 7.0
 mouse_filter = 2
 color = Color(0.39688927, 0.39688927, 0.39688924, 1)
 
 [node name="muzzle" type="Marker2D" parent="." unique_id=717453693]
-position = Vector2(72, 0)
+position = Vector2(70, 0)
 
 [node name="FireCoolDown" type="Timer" parent="." unique_id=68645328]
 wait_time = 0.07100000000000001

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://5qf3d1t6rrie"]
+
+[ext_resource type="Script" uid="uid://b1i6cvjkiai4j" path="res://game/Menus/player_select.gd" id="1_23kbb"]
+[ext_resource type="Texture2D" uid="uid://c6ur3obswgae4" path="res://Splash example.png" id="2_kgpwq"]
+
+[node name="PlayerSelect" type="Control" unique_id=818436395]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_23kbb")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1482895959]
+modulate = Color(0.047058824, 0.29411766, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kgpwq")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=397222492]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 340.0
+offset_right = -480.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackPlayerSelect" type="Button" parent="CenterContainer" unique_id=2059123743]
+custom_minimum_size = Vector2(175, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "BACK"
+
+[connection signal="pressed" from="CenterContainer/BackPlayerSelect" to="." method="_on_back_player_select_pressed"]

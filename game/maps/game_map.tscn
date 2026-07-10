@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bsu06ld77ep"]
+
+[ext_resource type="Script" uid="uid://ckn5ihfgaiolt" path="res://game/maps/game_map.gd" id="1_86jhl"]
+
+[node name="GameMap" type="Node2D" unique_id=365001543]
+script = ExtResource("1_86jhl")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=733077008]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Node2D" unique_id=1510063328]
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="Node2D" unique_id=591433004]
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="Node2D" unique_id=1988754433]

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cyru3ilohl0ix"]
+
+[ext_resource type="Script" uid="uid://cutou4lt2t8yg" path="res://game/Menus/settings_menu.gd" id="1_ih8ha"]
+[ext_resource type="Texture2D" uid="uid://c6ur3obswgae4" path="res://Splash example.png" id="2_wj8w6"]
+
+[node name="SettingsMenu" type="Control" unique_id=786916250]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ih8ha")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1733894134]
+modulate = Color(1, 0.019607844, 0.05490196, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wj8w6")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=211308096]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackSettings" type="Button" parent="CenterContainer" unique_id=1705557564]
+custom_minimum_size = Vector2(175, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "BACK"
+
+[connection signal="pressed" from="CenterContainer/BackSettings" to="." method="_on_back_settings_pressed"]
