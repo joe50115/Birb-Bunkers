@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ch20wn3km8gt4"]
+
+[ext_resource type="Script" uid="uid://cabs74hc4cm5x" path="res://game/entities/weapons/gun.gd" id="1_aob5y"]
+[ext_resource type="PackedScene" uid="uid://bwcf0an3cj218" path="res://game/entities/projectiles/bullet.tscn" id="2_gdejx"]
+
+[node name="gun" type="Node2D" unique_id=2087047367]
+script = ExtResource("1_aob5y")
+bullet_scene = ExtResource("2_gdejx")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2129960651]
+offset_top = -8.0
+offset_right = 72.0
+offset_bottom = 8.0
+mouse_filter = 2
+color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+
+[node name="muzzle" type="Marker2D" parent="." unique_id=717453693]
+position = Vector2(72, 0)
+
+[node name="FireCoolDown" type="Timer" parent="." unique_id=68645328]
+wait_time = 0.07100000000000001

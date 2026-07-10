@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bwcf0an3cj218"]
+
+[ext_resource type="Script" uid="uid://br8mfolfkyd1f" path="res://game/entities/projectiles/bullet.gd" id="1_mxdcr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db4e1"]
+size = Vector2(66.666664, 66.66666)
+
+[node name="bullet" type="Area2D" unique_id=1243753891]
+script = ExtResource("1_mxdcr")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=93429306]
+offset_left = 15.999999
+offset_top = 32.0
+offset_right = 83.471344
+offset_bottom = 99.96704
+scale = Vector2(0.11856889, 0.117704146)
+mouse_filter = 2
+color = Color(0.9098039, 0, 0.3137255, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=200637725]
+position = Vector2(20, 36)
+scale = Vector2(0.12, 0.12)
+shape = SubResource("RectangleShape2D_db4e1")
+
+[node name="Timer" type="Timer" parent="." unique_id=1068691383]
+wait_time = 3.1719999999999997
+one_shot = true

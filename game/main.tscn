@@ -1,22 +1,11 @@
-[gd_scene format=3 uid="uid://bo0182rbkmag4"]
+[gd_scene format=3 uid="uid://hm36jeq8ptiu"]
 
-[ext_resource type="PackedScene" uid="uid://crs1uxb5mvmr6" path="res://game/entities/player/player.tscn" id="1_oa506"]
-[ext_resource type="PackedScene" uid="uid://dq4n8p7xvr2m1" path="res://game/entities/recources/resource_node.tscn" id="2_xtpaf"]
+[ext_resource type="PackedScene" uid="uid://l5c27wmtk2nr" path="res://game/entities/player/player_test.tscn" id="1_oa506"]
 
-[node name="main" type="Node2D" unique_id=1453978936]
+[node name="main" type="Node2D" unique_id=1627810972]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1512413690]
-offset_left = 7.0
-offset_top = -17.0
-offset_right = 1286.0
-offset_bottom = 703.0
-scale = Vector2(0.99795055, 1.0116475)
-color = Color(0, 0.94509804, 0.08235294, 1)
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1757650366]
+offset_right = 1280.0
+offset_bottom = 720.0
 
-[node name="Player" parent="." unique_id=1230792394 instance=ExtResource("1_oa506")]
-position = Vector2(647, 351.99997)
-scale = Vector2(0.99795055, 1.0116475)
-
-[node name="ResourceNode" parent="." unique_id=664436555 instance=ExtResource("2_xtpaf")]
-position = Vector2(1030, 519.99994)
-scale = Vector2(0.9979505, 1.0116473)
+[node name="player test" parent="ColorRect" unique_id=1216298731 instance=ExtResource("1_oa506")]
