@@ -28,14 +28,25 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 340.0
-offset_right = -480.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackPlayerSelect" type="Button" parent="CenterContainer" unique_id=2059123743]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=113412721]
+layout_mode = 2
+
+[node name="BackPlayerSelect" type="Button" parent="CenterContainer/HBoxContainer" unique_id=2059123743]
 custom_minimum_size = Vector2(175, 70)
 layout_mode = 2
+focus_neighbor_right = NodePath("../Begin")
 theme_override_font_sizes/font_size = 28
 text = "BACK"
 
-[connection signal="pressed" from="CenterContainer/BackPlayerSelect" to="." method="_on_back_player_select_pressed"]
+[node name="Begin" type="Button" parent="CenterContainer/HBoxContainer" unique_id=78399380]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../BackPlayerSelect")
+theme_override_font_sizes/font_size = 28
+text = "PLAY"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/BackPlayerSelect" to="." method="_on_back_player_select_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Begin" to="." method="_on_begin_pressed"]
