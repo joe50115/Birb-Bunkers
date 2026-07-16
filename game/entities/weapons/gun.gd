@@ -1,3 +1,4 @@
+class_name Gun
 extends Node2D
 
 # makes it easier to attach bllets to the gun in inspector

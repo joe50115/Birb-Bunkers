@@ -1,37 +1,44 @@
 extends CharacterBody2D
 
+# Player movement speed
 @export var speed: float = 200.0
 
-@onready var gun: Node2D = $gun
+# Reference to the player's gun
+@onready var gun: Gun = $gun
 
+# Stores the current aim direction and active aiming device
 var aim_direction: Vector2 = Vector2.RIGHT
 var using_controller_aim: bool = false
 
 
+# Switch back to mouse aiming when the mouse moves
 func _input(event: InputEvent) -> void:
-	# Moving the mouse switches aiming back to the mouse.
 	if event is InputEventMouseMotion:
 		using_controller_aim = false
 
 
+# Runs movement, aiming, and shooting every physics frame
 func _physics_process(_delta: float) -> void:
-	var direction := Vector2.ZERO
+	handle_movement()
+	handle_aim()
+	handle_shooting()
 
-	if Input.is_action_pressed("move_up"):
-		direction.y -= 1
-	if Input.is_action_pressed("move_down"):
-		direction.y += 1
-	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("move_right"):
-		direction.x += 1
 
-	direction = direction.normalized()
+# Moves the player using the movement actions
+func handle_movement() -> void:
+	var direction := Input.get_vector(
+		"move_left",
+		"move_right",
+		"move_up",
+		"move_down"
+	)
+
 	velocity = direction * speed
 	move_and_slide()
 
 
-	# Read the right-stick direction every frame.
+# Aims with the controller or mouse and rotates the gun
+func handle_aim() -> void:
 	var stick_aim := Input.get_vector(
 		"aim_left",
 		"aim_right",
@@ -43,18 +50,16 @@ func _physics_process(_delta: float) -> void:
 		using_controller_aim = true
 		aim_direction = stick_aim.normalized()
 
-	# Use mouse aiming whenever the mouse was the last aiming device.
 	elif not using_controller_aim:
 		var mouse_aim := get_global_mouse_position() - gun.global_position
 
 		if mouse_aim.length() > 1.0:
 			aim_direction = mouse_aim.normalized()
 
-
-	# Rotate the physical gun toward the aim direction.
 	gun.rotation = aim_direction.angle()
 
 
-	# Fire in the exact direction the gun is facing.
+# Fires the gun in the current aim direction
+func handle_shooting() -> void:
 	if Input.is_action_just_pressed("fire"):
 		gun.fire(aim_direction)
