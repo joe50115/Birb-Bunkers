@@ -16,7 +16,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
-	
+
+# when the bullet enters enemy hit box func
 func _on_body_entered(body: Node2D) -> void:
 	# Later: check if body is an enemy, deal damage here
 	queue_free()
