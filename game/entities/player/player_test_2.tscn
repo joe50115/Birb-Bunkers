@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://kcs1qpraocj8"]
+
+[ext_resource type="Script" uid="uid://nyx456ohn5j" path="res://game/entities/player/player_test.gd" id="1_plfoe"]
+[ext_resource type="PackedScene" uid="uid://ch20wn3km8gt4" path="res://game/entities/weapons/gun.tscn" id="2_idjtd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_db4e1"]
+radius = 32.0
+height = 64.0
+
+[node name="player test2" type="CharacterBody2D" unique_id=1216298731]
+script = ExtResource("1_plfoe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=819734210]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=14977418]
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 75.0
+offset_bottom = 87.0
+mouse_filter = 2
+color = Color(0, 1, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=558732454]
+position = Vector2(48, 64)
+shape = SubResource("CapsuleShape2D_db4e1")
+
+[node name="gun" parent="." unique_id=2087047367 instance=ExtResource("2_idjtd")]
+position = Vector2(48, 64)

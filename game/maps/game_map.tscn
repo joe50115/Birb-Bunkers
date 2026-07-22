@@ -1,11 +1,28 @@
 [gd_scene format=3 uid="uid://hm36jeq8ptiu"]
 
-[ext_resource type="PackedScene" uid="uid://l5c27wmtk2nr" path="res://game/entities/player/player_test.tscn" id="1_86jhl"]
+[ext_resource type="Script" uid="uid://ckn5ihfgaiolt" path="res://game/maps/game_map.gd" id="1_86jhl"]
+[ext_resource type="PackedScene" uid="uid://l5c27wmtk2nr" path="res://game/entities/player/player_test.tscn" id="2_tdl54"]
 
 [node name="GameMap" type="Node2D" unique_id=1627810972]
+script = ExtResource("1_86jhl")
+player_scene = ExtResource("2_tdl54")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1757650366]
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="player test" parent="ColorRect" unique_id=1216298731 instance=ExtResource("1_86jhl")]
+[node name="Players" type="Node2D" parent="." unique_id=1332583928]
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1330795015]
+
+[node name="Player1Spawn" type="Marker2D" parent="SpawnPoints" unique_id=1420041337]
+position = Vector2(50, 50)
+
+[node name="Player2Spawn" type="Marker2D" parent="SpawnPoints" unique_id=1717715761]
+position = Vector2(1230, 670)
+
+[node name="Player3Spawn" type="Marker2D" parent="SpawnPoints" unique_id=1468945318]
+position = Vector2(1230, 50)
+
+[node name="Player4Spawn" type="Marker2D" parent="SpawnPoints" unique_id=1585729741]
+position = Vector2(50, 670)

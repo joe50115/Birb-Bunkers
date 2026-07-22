@@ -6,6 +6,10 @@ extends CharacterBody2D
 # Reference to the player's gun
 @onready var gun: Gun = $gun
 
+var player_id: int = 0
+var device_id: int = -1
+var character_id: int = 0
+
 # Stores the current aim direction and active aiming device
 var aim_direction: Vector2 = Vector2.RIGHT
 var using_controller_aim: bool = false
