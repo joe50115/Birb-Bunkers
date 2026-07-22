@@ -6,9 +6,23 @@ extends CharacterBody2D
 # Reference to the player's gun
 @onready var gun: Gun = $gun
 
+@export var speed: float = 200.0  #player speed
+
+@onready var gun: Node2D = $gun  #
+
+
 # Stores the current aim direction and active aiming device
 var aim_direction: Vector2 = Vector2.RIGHT
 var using_controller_aim: bool = false
+
+var harvestable_in_range: Array = []
+var resources: Dictionary = {"wood": 0}
+
+
+func _ready() -> void:
+	var harvest_area = get_node("HarvestArea")
+	harvest_area.area_entered.connect(_on_harvest_area_entered)
+	harvest_area.area_exited.connect(_on_harvest_area_exited)
 
 
 # Switch back to mouse aiming when the mouse moves
@@ -59,7 +73,36 @@ func handle_aim() -> void:
 	gun.rotation = aim_direction.angle()
 
 
+
 # Fires the gun in the current aim direction
 func handle_shooting() -> void:
 	if Input.is_action_just_pressed("fire"):
+
+	# Fire in the exact direction the gun is facing.
+	if Input.is_action_pressed("fire"):
+
 		gun.fire(aim_direction)
+		
+	
+	
+
+	# Harvest whatever's closest in range.
+	if Input.is_action_just_pressed("harvest") and not harvestable_in_range.is_empty():
+		var target = harvestable_in_range[0]
+		var data: Dictionary = target.harvest()
+		resources[data["type"]] = resources.get(data["type"], 0) + data["amount"]
+		harvestable_in_range.erase(target)
+		update_resource_label()
+
+func _on_harvest_area_entered(area: Area2D) -> void:
+	if area.has_method("harvest"):
+		harvestable_in_range.append(area)
+		get_node("HUD").get_node("HarvestPrompt").visible = true
+
+func _on_harvest_area_exited(area: Area2D) -> void:
+	harvestable_in_range.erase(area)
+	if harvestable_in_range.is_empty():
+		get_node("HUD").get_node("HarvestPrompt").visible = false
+
+func update_resource_label() -> void:
+	get_node("HUD").get_node("ResourceLabel").text = "Wood: %d" % resources["wood"]

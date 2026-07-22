@@ -7,22 +7,33 @@
 radius = 32.0
 height = 64.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_db4e1"]
+
 [node name="player test" type="CharacterBody2D" unique_id=1216298731]
+scale = Vector2(1.0134747, 1.0468341)
 script = ExtResource("1_vw8kq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=819734210]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=14977418]
-offset_left = 24.0
-offset_top = 40.0
-offset_right = 75.0
-offset_bottom = 87.0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 27.0
+offset_bottom = 23.0
 mouse_filter = 2
 color = Color(0, 1, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=558732454]
-position = Vector2(48, 64)
 shape = SubResource("CapsuleShape2D_db4e1")
+debug_color = Color(0.9666452, 0.00021947622, 0.82988966, 0.41960785)
 
 [node name="gun" parent="." unique_id=2087047367 instance=ExtResource("2_rjb8r")]
-position = Vector2(48, 64)
+
+[node name="HarvestArea" type="Area2D" parent="." unique_id=1761703150]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestArea" unique_id=539397039]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_db4e1")
+debug_color = Color(0.24569795, 0.62084687, 0.39888957, 0.22745098)
