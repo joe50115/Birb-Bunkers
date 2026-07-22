@@ -64,6 +64,7 @@ func handle_aim() -> void:
 		"aim_right",
 		"aim_up",
 		"aim_down"
+		
 	)
 
 	if stick_aim.length() > 0.2:
